@@ -1,7 +1,6 @@
 import { promises as fsPromises } from 'fs';
 import path from 'path';
 
-// Change Directory
 export const changeDirectory = async (currentDir, newPath) => {
   const resolvedPath = path.resolve(currentDir, newPath);
   try {
@@ -17,7 +16,6 @@ export const changeDirectory = async (currentDir, newPath) => {
   return currentDir;
 };
 
-// List Files
 export const listFiles = async (currentDir) => {
   try {
     const files = await fsPromises.readdir(currentDir);

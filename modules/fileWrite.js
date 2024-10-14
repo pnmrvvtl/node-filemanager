@@ -2,19 +2,22 @@ import { createWriteStream } from 'fs';
 import path from 'path';
 import { EOL } from 'os';
 
-// Write content to file
-export const writeFile = async (currentDir, filePath, content) => {
-  const fullPath = path.resolve(currentDir, filePath);
-  const writeStream = createWriteStream(fullPath, { flags: 'a' });
+export const writeFile = (currentDir, filePath, content) => {
+  return new Promise((resolve, reject) => {
+    const fullPath = path.resolve(currentDir, filePath);
+    const writeStream = createWriteStream(fullPath, { flags: 'a' });
 
-  writeStream.write(content + EOL);
-  writeStream.end();
+    writeStream.write(content + EOL);
+    writeStream.end();
 
-  writeStream.on('finish', () => {
-    console.log('File updated');
-  });
+    writeStream.on('finish', () => {
+      console.log('File created successfully');
+      resolve();
+    });
 
-  writeStream.on('error', () => {
-    console.log('Operation failed');
+    writeStream.on('error', (err) => {
+      console.log('Operation failed');
+      reject(err);
+    });
   });
 };
