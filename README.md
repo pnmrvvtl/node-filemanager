@@ -87,7 +87,3 @@ If an invalid command is entered or an operation fails, the file manager will di
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-This `README.md` file gives a clear overview of the features and usage instructions for your file manager project. You can include it in your project repository so that users and contributors can easily understand how to use the file manager.
